@@ -1,0 +1,82 @@
+.nav {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e7e5e4;
+}
+
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brandIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #f97316;
+}
+
+.brandText {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #292524;
+  letter-spacing: -0.015em;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.navButton:hover {
+  background-color: #fafaf9;
+}
+
+.navButtonActive {
+  border-color: #292524;
+  background-color: #fafaf9;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #78716c;
+}
+
+.iconActive {
+  color: #292524;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: #78716c;
+}
+
+.labelActive {
+  color: #292524;
+  font-weight: 500;
+}
