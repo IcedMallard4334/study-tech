@@ -1,0 +1,23 @@
+.card{
+
+    width:100%;
+
+    max-width:550px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:2rem;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    transition:.3s ease;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+}
