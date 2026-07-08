@@ -1,0 +1,30 @@
+.auth-page{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:white
+}
+
+.auth-card{
+    width: 100%;
+    max-width: 380px;
+    background: rgb(251, 194, 81);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    text-align: center;
+
+}
+
+.auth-inputs input{
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    outline: none;
+    font-size: 0.95rem;
+    transition: 0.2s ease;
+}
