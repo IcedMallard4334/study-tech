@@ -1,0 +1,49 @@
+.complete-profile-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 2rem;
+
+    background: #f5f7fb;
+
+}
+
+.complete-profile-page h1 {
+
+    margin-bottom: .5rem;
+
+}
+
+.complete-profile-page p {
+
+    color: #666;
+
+    margin-bottom: 2rem;
+
+}
+
+.subjects-section {
+
+    margin: 2rem 0;
+
+}
+
+.subject-checkbox {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .75rem;
+
+    margin-bottom: .75rem;
+
+    cursor: pointer;
+
+}

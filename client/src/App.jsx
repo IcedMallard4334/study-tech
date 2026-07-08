@@ -1,14 +1,11 @@
 import './App.css'
-import Login from './pages/Auth/Login'
+import AppRouter from './components/Routes/AppRouter';
 
 function App() {
 
   return (
-    <>
-      {/*Feel free to comment this out*/}
-      <Login/>
-    </>
-  )
+    <AppRouter />
+  );
 }
 
 export default App
