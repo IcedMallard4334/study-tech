@@ -1,5 +1,6 @@
 import Button from "../common/Button/Button";
 import Card from "../common/Card/Card";
+import ProgressBar from "../Onboarding/ProgressBar/ProgressBar";
 import StepIndicator from "../onboarding/StepIndicator/StepIndicator";
 import './QuizCard.css'
 
@@ -8,21 +9,61 @@ const QuizCard = ({question, onSelect, selectedOption, onNext, isSubmitting, cur
     return (  
         <Card>
 
-            <StepIndicator
+            <div className="quiz-header">
+                <StepIndicator
 
-                currentStep={currentQuestion}
+                    currentStep={2}
 
-                totalSteps={totalQuestions}
+                    totalSteps={2}
 
-            />
+                />
 
-            <p className="question-counter">
+                <p className="step-label">
 
-                Question {currentQuestion} of {totalQuestions}
+                    Step 2 of 2
 
-            </p>
+                </p>
 
-            <h2>
+                <h1>
+
+                    Learning Preferences
+
+                </h1>
+
+                <p className="quiz-description">
+
+                    Answer a few questions so we can recommend lessons that match how you learn best.
+
+                </p>
+            </div>
+
+            <div className="question-progress">
+                <div className="progress-header">
+
+                    <h3>
+
+                        Question {currentQuestion}
+
+                    </h3>
+
+                    <span>
+
+                        {totalQuestions}
+
+                    </span>
+
+                </div>
+
+                <ProgressBar
+
+                    current={currentQuestion}
+
+                    total={totalQuestions}
+
+                />
+            </div>
+
+            <h2 className="question-title">
 
                 {question.question}
 
@@ -31,17 +72,13 @@ const QuizCard = ({question, onSelect, selectedOption, onNext, isSubmitting, cur
             <div className="quiz-options">
 
                 {
-
                     question?.options?.map((option) => (
-
-                        <Button key={option.id}
+                        <Button className = "answerBtn" key={option.id}
                             variant={selectedOption?.id === option.id ? "primary" : "secondary"}
                             onClick={() => onSelect(option)}
-
                         >
                             {option.text}
                         </Button>
-
                     ))
 
                 }

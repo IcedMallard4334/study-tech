@@ -1,7 +1,7 @@
+import './WelcomePage.css';
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/common/Card/Card";
 import Button from "../../components/common/Button/Button";
-
 
 const WelcomePage = () => {
 
@@ -21,7 +21,7 @@ const WelcomePage = () => {
                 <p className="description">
                     Before we personalize your learning
                     experience, we'd like to learn a little
-                    about you.
+                    about you.<br/>
 
                     This will only take about 2 minutes.
                 </p>

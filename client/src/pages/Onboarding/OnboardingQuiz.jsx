@@ -112,25 +112,25 @@ const OnboardingQuiz = () => {
 
     return(
         
+        <div className="onboarding-page">
+            <QuizCard
 
-        <QuizCard
+                question={ onboardingQuestions[currentQuestion]}
+
+                selectedOption={selectedOption}
+
+                onSelect={handleSelect}
+
+                onNext={handleNext}
+
+                isSubmitting={isSubmitting}
+
+                currentQuestion={currentQuestion + 1}
+
+                totalQuestions={onboardingQuestions.length}
             
-
-            question={ onboardingQuestions[currentQuestion]}
-
-            selectedOption={selectedOption}
-
-            onSelect={handleSelect}
-
-            onNext={handleNext}
-
-            isSubmitting={isSubmitting}
-
-            currentQuestion={currentQuestion + 1}
-
-            totalQuestions={onboardingQuestions.length}
-
-        />
+            />
+        </div>
 
     );
 

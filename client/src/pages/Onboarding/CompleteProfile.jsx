@@ -4,6 +4,7 @@ import { createUserProfile} from "../../services/userService";
 import Card from "../../components/common/Card/Card";
 import Select from "../../components/common/Select/Select";
 import Button from "../../components/common/Button/Button";
+import StepIndicator from "../../components/onboarding/StepIndicator/StepIndicator";
 import "./CompleteProfile.css";
 
 const CompleteProfile = () => {
@@ -104,6 +105,19 @@ const CompleteProfile = () => {
 
             <Card>
 
+                <StepIndicator
+
+                    currentStep={1}
+
+                    totalSteps={2}
+
+                />
+                <p className="step-label">
+
+                    Step 1 of 2
+
+                </p>
+
                 <h1>
                     Academic Information
                 </h1>
@@ -157,44 +171,55 @@ const CompleteProfile = () => {
                         }
 
                     />
+                    <div className="subjects-section">
+                        <h3>
+                            Subjects
+                        </h3>
 
-                    <h3>
-                        Subjects
-                    </h3>
+                        <p className="subjects-description">
 
-                    {
-                        subjectList.map(subject => (
+                            Select all the subjects you're currently taking.
 
-                            <label key={subject}>
+                        </p>
 
-                                <input
+                        <div className="subjects-grid">
 
-                                    type="checkbox"
+                        {
+                            subjectList.map(subject => (
 
-                                    checked={
+                                <label key={subject} className="subject-card">
 
-                                        formData.academics.subjects.includes(subject)
+                                    <input
 
-                                    }
+                                        type="checkbox"
 
-                                    onChange={() =>
+                                        checked={
 
-                                        handleSubjectChange(subject)
+                                            formData.academics.subjects.includes(subject)
 
-                                    }
+                                        }
 
-                                />
+                                        onChange={() =>
 
-                                {subject}
+                                            handleSubjectChange(subject)
 
-                            </label>
+                                        }
 
-                        ))
-                    }
+                                    />
+
+                                    <span>{subject}</span>
+
+                                </label>
+
+                            ))
+                        }
+                        </div>
+                    </div>
 
                     <Button type="submit">Continue</Button>
                 </form>
             </Card>
+
 
         </div>
     );

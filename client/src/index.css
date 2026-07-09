@@ -4,3 +4,16 @@
   box-sizing: border-box;
 }
 
+:root{
+    --bg:#F5F7F3; --surface:#FFFFFF; --surface-alt:#EEF2EC; --border:#DDE3D9;
+    --text:#1E2A22; --text-secondary:#5B6B5E; --text-muted:#8B9A8E;
+    --primary:#1E5F5C; --primary-dark:#163F3D; --primary-light:#DCEFEC;
+    --accent:#E0812F; --accent-dark:#B4661F; --accent-light:#FBE7D2;
+    --success:#3F8F5C; --success-light:#DFF0E4;
+    --danger:#B23A3A; --danger-light:#F5DEDE;
+    --visual:#2C6E9E; --visual-bg:#DCEAF4;
+    --auditory:#6B4C9A; --auditory-bg:#E9E1F4;
+    --reading:#A85A1E; --reading-bg:#F3E1CD;
+    --kinesthetic:#B23A6B; --kinesthetic-bg:#F5DCE7;
+    --radius:10px; --radius-lg:16px;
+  }

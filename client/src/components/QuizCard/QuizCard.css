@@ -1,3 +1,39 @@
+.question-progress{
+
+    margin:2rem 0;
+
+}
+
+.progress-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:.75rem;
+
+}
+
+.progress-header h3{
+
+    margin:0;
+
+    color:#1E293B;
+
+    font-size:1rem;
+
+}
+
+.progress-header span{
+
+    color:#64748B;
+
+    font-weight:600;
+
+}
+
 .quiz-options{
 
     display:flex;
@@ -6,7 +42,8 @@
 
     gap:1rem;
 
-    margin-top:2rem;
+    margin:2rem 0;
+    
 
 }
 
@@ -17,17 +54,5 @@
     font-size: 0.9rem;
 
     margin: 1rem 0;
-
-}
-
-.quiz-options{
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 1rem;
-
-    margin: 2rem 0;
 
 }
