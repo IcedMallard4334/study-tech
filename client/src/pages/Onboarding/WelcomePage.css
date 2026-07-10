@@ -1,0 +1,81 @@
+.welcome-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:2rem;
+
+    background:linear-gradient(
+        135deg,
+        #EEF5FF,
+        #F9FBFF
+    );
+
+}
+
+.welcome-card{
+
+    text-align:center;
+
+}
+
+.welcome-icon{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#2F80ED;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:2.5rem;
+
+    margin:0 auto 2rem;
+
+}
+
+.welcome-card h1{
+
+    font-size:2rem;
+
+    margin-bottom:1rem;
+
+    color:#1F2937;
+
+}
+
+.subtitle{
+
+    font-size:1.1rem;
+
+    color:#E0812F;
+
+    font-weight:600;
+
+    margin-bottom:1rem;
+
+}
+
+.description{
+
+    color:#6B7280;
+
+    line-height:1.7;
+
+    margin-bottom:2rem;
+
+}

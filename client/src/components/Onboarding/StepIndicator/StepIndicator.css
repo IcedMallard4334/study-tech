@@ -1,0 +1,27 @@
+.step-indicator{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:35px;
+
+}
+
+.step{
+
+    flex:1;
+
+    height:8px;
+
+    background:#ddd;
+
+    border-radius:999px;
+
+}
+
+.step.active{
+
+    background: #E0812F;
+
+}

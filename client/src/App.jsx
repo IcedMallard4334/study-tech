@@ -1,15 +1,12 @@
 import './App.css'
-import Login from './pages/Auth/Login'
+import AppRouter from './components/Routes/AppRouter';
 import HomePage from './pages/Dashboard/HomePage'
 import NavBar from './pages/Navigation/NavBar'
 
 function App() {
   return (
-    <>
-      <NavBar active="home" />
-      <HomePage />
-    </>
-  )
+    <AppRouter />
+  );
 }
 
 export default App

@@ -1,0 +1,15 @@
+.onboarding-page{
+
+    min-height:100vh;
+
+    background:#F8FAFC;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:2rem;
+
+}
