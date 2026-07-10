@@ -1,21 +1,5 @@
 import { Flame } from "lucide-react";
-import styles from "./HomePage.module.css";
-
-const DEFAULT_SUBJECTS = [
-  { name: "Math", percent: 62 },
-  { name: "Physics", percent: 41 },
-  { name: "Chemistry", percent: 78 },
-  { name: "Geography", percent: 50 },
-];
-
-const DEFAULT_STATS = {
-  lessonsDone: 23,
-  subjectsCount: 4,
-  questionsAsked: 7,
-  quizScore: 85,
-};
-
-const DEFAULT_BADGES = ["🏆", "📗", "🔥", "💡"];
+import styles from "./Dashboard.module.css";
 
 const QUICK_ACTIONS = [
   { key: "study", label: "Study" },
@@ -47,29 +31,36 @@ function SubjectProgress({ name, percent }) {
   );
 }
 
-export default function HomePage({
-  name = "Lesedi",
-  learningStyle = "visual",
-  streakDays = 6,
-  stats = DEFAULT_STATS,
-  subjects = DEFAULT_SUBJECTS,
-  badges = DEFAULT_BADGES,
-  continueLesson = {
-    title: "Simultaneous equations",
-    recommendation: "diagram walkthrough",
-  },
+export default function Dashboard({
+  name,
+  learningStyle,
+  streakDays = 0,
+  stats,
+  subjects = [],
+  badges = [],
+  continueLesson = null,
   onResume = () => {},
   onQuickAction = () => {},
 }) {
+  const safeStats = stats || {
+    lessonsDone: 0,
+    subjectsCount: subjects.length,
+    questionsAsked: 0,
+    quizScore: 0,
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles.container}>
         {/* Header */}
         <div className={styles.header}>
           <div>
-            <h1 className={styles.title}>Welcome back, {name}</h1>
+            <h1 className={styles.title}>Welcome back{name ? `, ${name}` : ""}</h1>
             <p className={styles.subtitle}>
-              Your learning style: <span className={styles.subtitleValue}>{learningStyle}</span>
+              Your learning style:{" "}
+              <span className={styles.subtitleValue}>
+                {learningStyle || "Not set"}
+              </span>
             </p>
           </div>
           <div className={styles.streak}>
@@ -80,23 +71,29 @@ export default function HomePage({
 
         {/* Stats row */}
         <div className={styles.statsRow}>
-          <StatCard value={stats.lessonsDone} label="Lessons done" />
-          <StatCard value={stats.subjectsCount} label="Subjects" />
-          <StatCard value={stats.questionsAsked} label="Questions asked" />
-          <StatCard value={`${stats.quizScore}%`} label="Quiz score" />
+          <StatCard value={safeStats.lessonsDone} label="Lessons done" />
+          <StatCard value={safeStats.subjectsCount} label="Subjects" />
+          <StatCard value={safeStats.questionsAsked} label="Questions asked" />
+          <StatCard value={`${safeStats.quizScore}%`} label="Quiz score" />
         </div>
 
         {/* Continue learning */}
         <div className={styles.continueCard}>
           <div>
             <p className={styles.continueEyebrow}>Continue learning</p>
-            <h2 className={styles.continueTitle}>{continueLesson.title}</h2>
-            <p className={styles.continueRecommendation}>
-              Recommended: {continueLesson.recommendation}
-            </p>
+            {continueLesson ? (
+              <>
+                <h2 className={styles.continueTitle}>{continueLesson.title}</h2>
+                <p className={styles.continueRecommendation}>
+                  Recommended: {continueLesson.recommendation}
+                </p>
+              </>
+            ) : (
+              <h2 className={styles.continueTitle}>No lessons started yet</h2>
+            )}
           </div>
-          <button onClick={onResume} className={styles.resumeButton}>
-            Resume
+          <button onClick={onResume} className={styles.resumeButton} disabled={!continueLesson}>
+            {continueLesson ? "Resume" : "Start learning"}
           </button>
         </div>
 
@@ -104,9 +101,15 @@ export default function HomePage({
           {/* Subject progress */}
           <div className={styles.panel}>
             <h3 className={styles.panelTitle}>Your subjects</h3>
-            {subjects.map((s) => (
-              <SubjectProgress key={s.name} name={s.name} percent={s.percent} />
-            ))}
+            {subjects.length > 0 ? (
+              subjects.map((s) => (
+                <SubjectProgress key={s.name} name={s.name} percent={s.percent} />
+              ))
+            ) : (
+              <p className={styles.continueRecommendation}>
+                No subjects added yet.
+              </p>
+            )}
           </div>
 
           {/* Quick actions + badges */}
@@ -128,11 +131,17 @@ export default function HomePage({
 
             <div className={styles.panel}>
               <h3 className={styles.panelTitle}>Achievements</h3>
-              <div className={styles.badgeRow}>
-                {badges.map((b, i) => (
-                  <span key={i}>{b}</span>
-                ))}
-              </div>
+              {badges.length > 0 ? (
+                <div className={styles.badgeRow}>
+                  {badges.map((b, i) => (
+                    <span key={i}>{b}</span>
+                  ))}
+                </div>
+              ) : (
+                <p className={styles.continueRecommendation}>
+                  No achievements yet.
+                </p>
+              )}
             </div>
           </div>
         </div>

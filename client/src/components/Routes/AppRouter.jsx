@@ -11,8 +11,7 @@ import CompleteProfile from "../../pages/onboarding/CompleteProfile";
 import OnboardingQuiz from "../../pages/onboarding/OnboardingQuiz";
 
 // Dashboard
-//import Dashboard from "../../pages/dashboard/Dashboard";
-
+import DashboardContainer from "../../pages/dashboard/DashboardContainer";
 
 const AppRouter = () => {
     return(
@@ -21,105 +20,56 @@ const AppRouter = () => {
             {/* Public */}
 
             <Route
-
                 path={ROUTES.LANDING}
-
                 element={<AuthPage />}
-
             />
 
             {/* Welcome */}
 
             <Route
-
                 path={ROUTES.WELCOME}
-
                 element={
-
-                    <ProtectedRoute
-
-                        allow={["needs-profile"]}
-
-                    >
-
+                    <ProtectedRoute allow={["needs-profile"]}>
                         <WelcomePage />
-
                     </ProtectedRoute>
-
                 }
-
             />
 
             {/* Complete Profile */}
 
             <Route
-
                 path={ROUTES.COMPLETE_PROFILE}
-
                 element={
-
-                    <ProtectedRoute
-
-                        allow={["needs-profile"]}
-
-                    >
-
+                    <ProtectedRoute allow={["needs-profile"]}>
                         <CompleteProfile />
-
                     </ProtectedRoute>
-
                 }
-
             />
 
             {/* Quiz */}
 
             <Route
-
                 path={ROUTES.ONBOARDING}
-
                 element={
-
-                    <ProtectedRoute
-
-                        allow={["needs-onboarding"]}
-
-                    >
-
+                    <ProtectedRoute allow={["needs-onboarding"]}>
                         <OnboardingQuiz />
-
                     </ProtectedRoute>
-
                 }
-
             />
 
-            {/* Dashboard 
+            {/* Dashboard */}
 
             <Route
-
                 path={ROUTES.DASHBOARD}
-
                 element={
-
-                    <ProtectedRoute
-
-                        allow={["ready"]}
-
-                    >
-
-                        <Dashboard />
-
+                    <ProtectedRoute allow={["ready"]}>
+                        <DashboardContainer />
                     </ProtectedRoute>
-
                 }
-
-            />*/}
+            />
 
         </Routes>
-
     );
-
 }
 
 export default AppRouter;
