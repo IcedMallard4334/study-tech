@@ -12,6 +12,10 @@ const AuthPage = () => {
         return <LoadingSpinner />;
     }
 
+    if (status === "needs-role") {
+        return <Navigate to={ROUTES.CHOOSE_ROLE} replace />;
+    }
+
     if (status === "needs-profile") {
         return <Navigate to={ROUTES.WELCOME} replace />;
     }

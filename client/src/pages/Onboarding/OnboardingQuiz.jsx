@@ -3,6 +3,7 @@ import onboardingQuestions from "../../data/onboardingQuestions";
 import { completeOnboarding } from "../../services/userService";
 import { useAuth } from "../../context/useAuth";
 import { useState } from "react";
+import "./OnboardingQuiz.css";
 
 const OnboardingQuiz = () => {
 
@@ -12,13 +13,13 @@ const OnboardingQuiz = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [scores, setScores] = useState({
 
-        reading:0,
+        reading_writing:0,
 
-        listening:0,
+        auditory:0,
 
         visual:0,
 
-        practical:0,
+        kinesthetic:0,
 
     });
 
@@ -32,28 +33,22 @@ const OnboardingQuiz = () => {
     const handleNext = async () => {
 
         if (!selectedOption || isSubmitting) return;
-
-        // Calculate updated scores
+        
+         // Copy the current scores
         const updatedScores = {
-
             ...scores,
-
-            [selectedOption.style]:
-
-                scores[selectedOption.style] + 1,
-
         };
 
+        // Add the selected answer's weights
+        Object.entries(selectedOption.scores).forEach(([style, value]) => {
+            updatedScores[style] += value;
+        });
+
+        // Save the updated scores for the next question
         setScores(updatedScores);
 
         // Last question?
-        if (
-
-            currentQuestion ===
-
-            onboardingQuestions.length - 1
-
-        ) {
+        if ( currentQuestion === onboardingQuestions.length - 1) {
 
             const dominantStyle = getLearningStyle(updatedScores);
             setIsSubmitting(true);

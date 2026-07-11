@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../../context/useAuth";
-import { createUserProfile} from "../../services/userService";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../utils/routes";
+import { updateAcademicProfile} from "../../services/userService";
 import Card from "../../components/common/Card/Card";
 import Select from "../../components/common/Select/Select";
 import Button from "../../components/common/Button/Button";
@@ -10,6 +12,9 @@ import "./CompleteProfile.css";
 const CompleteProfile = () => {
 
     const { user, refreshProfile } = useAuth();
+
+    const navigate = useNavigate();
+    
     const [formData, setFormData] = useState({
         academics: {
             curriculum: "",
@@ -81,23 +86,19 @@ const CompleteProfile = () => {
 
         e.preventDefault();
 
-        await createUserProfile(user.uid,{
-            personal: {
-                fullName: user.displayName,
-                email: user.email,
-                photoURL: user.photoURL,
-            },
+        try {
+            await updateAcademicProfile(user.uid,
+                formData.academics
+            );
 
-            academics: formData.academics,
+            await refreshProfile();
 
-            onboarding: {
-                completed: false,
-            },
-        });
-        
-        await refreshProfile();
-
-    }
+            navigate(ROUTES.ONBOARDING);
+        }
+        catch(error){
+            console.error(error); 
+        }
+    };
 
 
     return (  
