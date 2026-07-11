@@ -5,12 +5,17 @@ import AuthCard from "../../components/Auth/AuthCard";
 import { useAuth } from "../../context/useAuth";
 import { Navigate } from "react-router-dom";
 import { ROUTES } from "../../utils/routes";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const AuthPage = () => {
 
     const { status } = useAuth();
-    if (status === "loading") {
-        return <h2>Loading...</h2>;
+    if  (status === "loading") {
+        return <LoadingSpinner />;
+    }
+
+    if (status === "needs-role") {
+        return <Navigate to={ROUTES.CHOOSE_ROLE} replace />;
     }
 
     if (status === "needs-profile") {

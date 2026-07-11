@@ -27,11 +27,7 @@ export function AuthProvider({ children }) {
     // Current authentication/application status
     const [status, setStatus] = useState("loading");
 
-    /*
-|--------------------------------------------------------------------------
-| Loads the user's Firestore profile
-|--------------------------------------------------------------------------
-*/
+//Loads the user's Firestore profile
     const loadProfile = async (firebaseUser) => {
 
         // No logged-in user
@@ -51,10 +47,10 @@ export function AuthProvider({ children }) {
         const existingProfile =
             await getUserProfile(firebaseUser.uid);
 
-        // First-time learner
+        // First-time user
         if (!existingProfile) {
             setProfile(null);
-            setStatus("needs-profile");
+            setStatus("needs-role");
 
             return;
 
@@ -63,12 +59,23 @@ export function AuthProvider({ children }) {
         // Save profile
         setProfile(existingProfile);
 
-        // Has onboarding been completed?
-        if (existingProfile.onboarding.completed) {
-            setStatus("ready");
+        const onboarding = existingProfile.onboarding;
+
+        //Determine where the user should continue onboarding
+        if (!onboarding.roleSelected) {
+            setStatus("needs-role");
         }
-        else {
+
+        else if (!onboarding.profileCompleted) {
+            setStatus("needs-profile");
+        }
+
+        else if (!onboarding.quizCompleted) {
             setStatus("needs-onboarding");
+        }
+
+        else {
+            setStatus("ready");
         }
 
     };
