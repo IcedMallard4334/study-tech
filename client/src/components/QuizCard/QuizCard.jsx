@@ -7,7 +7,7 @@ import './QuizCard.css'
 const QuizCard = ({question, onSelect, selectedOption, onNext, isSubmitting, currentQuestion,totalQuestions}) => {
     console.log(question);
     return (  
-        <Card>
+        <Card className="quiz-card">
 
             <div className="quiz-header">
                 <StepIndicator

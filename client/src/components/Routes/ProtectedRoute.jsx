@@ -18,10 +18,15 @@ const ProtectedRoute = ({children, allow}) => {
             case "unauthenticated":
 
                 return <Navigate to={ROUTES.LANDING} replace />;
+            
+            case "needs-role":
+
+                return <Navigate to={ROUTES.CHOOSE_ROLE} replace />;
 
             case "needs-profile":
 
                 return <Navigate to={ROUTES.WELCOME} replace />;
+
 
             case "needs-onboarding":
 

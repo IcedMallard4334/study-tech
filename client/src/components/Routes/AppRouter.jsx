@@ -4,11 +4,12 @@ import { ROUTES } from "../../utils/routes";
 
 // Public pages
 import AuthPage from "../../pages/AuthPage/AuthPage";
+import ChooseRole from "../../pages/Onboarding/ChooseRole";
 
 // Onboarding pages
-import WelcomePage from "../../pages/onboarding/WelcomePage";
-import CompleteProfile from "../../pages/onboarding/CompleteProfile";
-import OnboardingQuiz from "../../pages/onboarding/OnboardingQuiz";
+import WelcomePage from "../../pages/Onboarding/WelcomePage";
+import CompleteProfile from "../../pages/Onboarding/CompleteProfile";
+import OnboardingQuiz from "../../pages/Onboarding/OnboardingQuiz";
 
 // Dashboard
 //import Dashboard from "../../pages/dashboard/Dashboard";
@@ -25,6 +26,27 @@ const AppRouter = () => {
                 path={ROUTES.LANDING}
 
                 element={<AuthPage />}
+
+            />
+
+            {/*Role */}
+            <Route
+
+                path={ROUTES.CHOOSE_ROLE}
+
+                element={
+
+                    <ProtectedRoute
+
+                        allow={["needs-role"]}
+
+                    >
+
+                        <ChooseRole />
+
+                    </ProtectedRoute>
+
+                }
 
             />
 

@@ -27,18 +27,58 @@ export const getUserProfile = async (uid) => {
 
 /*Create a new user profile
 This runs ONLY once.
-Right after the learner completes their profile.
+Right after the learner chooses their role.
 */
-export const createUserProfile = async (uid, profileData) => {
+export const createUserProfile = async (uid, userData) => {
 
     const userRef = doc(db, "users", uid);
 
     await setDoc(userRef, {
-        ...profileData,
+        personal: {
+
+            fullName: userData.fullName,
+
+            email: userData.email,
+
+            photoURL: userData.photoURL,
+
+        },
+
+        account: {
+
+            role: userData.role,
+
+        },
+
+        academics: {
+
+            curriculum: "",
+
+            grade: "",
+
+            subjects: [],
+
+        },
+
+        preferences: {
+
+            learningStyle: null,
+
+        },
+
+        onboarding: {
+
+            roleSelected: true,
+
+            profileCompleted: false,
+
+            quizCompleted: false,
+
+        },
         // Metadata
         metadata: {
             createdAt: serverTimestamp(),
-        }
+        },
     });
 };
 
@@ -48,6 +88,21 @@ export const updateUserProfile = async (uid, updatedData) => {
     const userRef = doc(db, "users", uid);
 
     await updateDoc(userRef, updatedData);
+};
+
+//Update academic info
+export const updateAcademicProfile = async ( uid, academics) => {
+
+    const userRef = doc(db, "users", uid);
+
+    await updateDoc(userRef, {
+
+        academics,
+
+        "onboarding.profileCompleted": true
+
+    });
+
 };
 
 //Complete the onboarding process
@@ -69,11 +124,7 @@ export const completeOnboarding = async ( uid, learningStyle, scores) => {
 
         },
 
-        onboarding: {
-
-            completed: true,
-
-        },
+        "onboarding.quizCompleted": true,
 
     });
 
