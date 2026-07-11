@@ -1,10 +1,9 @@
-import { Home, BookOpen, Search, MessageCircle, User, Lightbulb } from "lucide-react";
+import { Home, BookOpen, MessageCircle, User, Lightbulb } from "lucide-react";
 import styles from "./NavBar.module.css";
 
 const NAV_ITEMS = [
   { key: "home", label: "Home", icon: Home },
   { key: "subjects", label: "Subjects", icon: BookOpen },
-  { key: "search", label: "Search", icon: Search },
   { key: "community", label: "Community", icon: MessageCircle },
   { key: "profile", label: "Profile", icon: User },
 ];
