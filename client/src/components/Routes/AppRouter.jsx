@@ -1,3 +1,5 @@
+//client/src/components/Routes/AppRouter.jsx
+
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import { ROUTES } from "../../utils/routes";
@@ -9,6 +11,15 @@ import AuthPage from "../../pages/AuthPage/AuthPage";
 import WelcomePage from "../../pages/onboarding/WelcomePage";
 import CompleteProfile from "../../pages/onboarding/CompleteProfile";
 import OnboardingQuiz from "../../pages/onboarding/OnboardingQuiz";
+
+
+
+import SubjectsList from "../../pages/Subjects/SubjectsList";
+import SubjectTopics from "../../pages/Subjects/SubjectTopics";
+
+
+import LessonPage from "../../pages/Lesson/LessonPage";
+
 
 // Dashboard
 //import Dashboard from "../../pages/dashboard/Dashboard";
@@ -92,6 +103,31 @@ const AppRouter = () => {
 
                 }
 
+            />
+            <Route
+                path={ROUTES.SUBJECTS}
+                element={
+                    <ProtectedRoute allow={["ready"]}>
+                        <SubjectsList />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path={`${ROUTES.SUBJECTS}/:subjectName`}
+                element={
+                    <ProtectedRoute allow={["ready"]}>
+                        <SubjectTopics />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path={ROUTES.LESSON}
+                element={
+                    <ProtectedRoute allow={["ready"]}>
+                        <LessonPage />
+                    </ProtectedRoute>
+                }
             />
 
             {/* Dashboard 

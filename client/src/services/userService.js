@@ -1,3 +1,5 @@
+//client/src/services/userService.js
+
 // Firestore functions
 import { doc, getDoc, setDoc, updateDoc, serverTimestamp, } from "firebase/firestore";
 

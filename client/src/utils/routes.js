@@ -1,3 +1,5 @@
+//client/src/utils/routes.js
+
 export const ROUTES = {
 
     LANDING: "/",
@@ -9,5 +11,9 @@ export const ROUTES = {
     ONBOARDING: "/onboarding",
 
     DASHBOARD: "/dashboard",
+
+    SUBJECTS: "/subjects",
+
+    LESSON: "/lesson/:topicId",
 
 };

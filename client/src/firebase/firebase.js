@@ -1,3 +1,5 @@
+//client/src/firebase/firebase.js
+
 //Firebase app initializer(SDK)
 import { initializeApp } from "firebase/app";
 

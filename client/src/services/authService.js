@@ -1,3 +1,5 @@
+//client/src/services/authService.js
+
 //Firebase authentication methods
 import { signInWithPopup, signOut } from "firebase/auth";
 

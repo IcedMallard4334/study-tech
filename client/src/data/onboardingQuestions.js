@@ -1,3 +1,5 @@
+//client/src/data/onboardingQuestions.js
+
 const onboardingQuestions = [
 
     {

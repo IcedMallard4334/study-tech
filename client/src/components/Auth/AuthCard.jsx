@@ -1,3 +1,5 @@
+//client/src/components/Auth/AuthCard.jsx
+
 import "./AuthCard.css";
 import { loginWithGoogle } from "../../services/authService";
 

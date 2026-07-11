@@ -1,3 +1,5 @@
+//client/src/pages/AuthPage/AuthPage.jsx
+
 import "./AuthPage.css";
 import AuthCard from "../../components/Auth/AuthCard";
 import { useAuth } from "../../context/useAuth";

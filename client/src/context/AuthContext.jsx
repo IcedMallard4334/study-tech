@@ -1,3 +1,5 @@
+//client/src/context/AuthContext.jsx 
+
 import { createContext, useEffect, useState } from "react";
 
 // Firestore functions
