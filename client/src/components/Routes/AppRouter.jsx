@@ -3,6 +3,7 @@
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import { ROUTES } from "../../utils/routes";
+import Layout from "../Layout/Layout";
 
 // Public pages
 import AuthPage from "../../pages/AuthPage/AuthPage";
@@ -13,14 +14,10 @@ import WelcomePage from "../../pages/Onboarding/WelcomePage";
 import CompleteProfile from "../../pages/Onboarding/CompleteProfile";
 import OnboardingQuiz from "../../pages/Onboarding/OnboardingQuiz";
 
-
-
 import SubjectsList from "../../pages/Subjects/SubjectsList";
 import SubjectTopics from "../../pages/Subjects/SubjectTopics";
 
-
 import LessonPage from "../../pages/Lesson/LessonPage";
-
 
 // Dashboard
 import DashboardContainer from "../../pages/dashboard/DashboardContainer";
@@ -38,23 +35,12 @@ const AppRouter = () => {
 
             {/*Role */}
             <Route
-
                 path={ROUTES.CHOOSE_ROLE}
-
                 element={
-
-                    <ProtectedRoute
-
-                        allow={["needs-role"]}
-
-                    >
-
+                    <ProtectedRoute allow={["needs-role"]}>
                         <ChooseRole />
-
                     </ProtectedRoute>
-
                 }
-
             />
 
             {/* Welcome */}
@@ -89,42 +75,47 @@ const AppRouter = () => {
                     </ProtectedRoute>
                 }
             />
-            <Route
-                path={ROUTES.SUBJECTS}
-                element={
-                    <ProtectedRoute allow={["ready"]}>
-                        <SubjectsList />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path={`${ROUTES.SUBJECTS}/:subjectName`}
-                element={
-                    <ProtectedRoute allow={["ready"]}>
-                        <SubjectTopics />
-                    </ProtectedRoute>
-                }
-            />
 
-            <Route
-                path={ROUTES.LESSON}
-                element={
-                    <ProtectedRoute allow={["ready"]}>
-                        <LessonPage />
-                    </ProtectedRoute>
-                }
-            />
+            {/* Pages that show the nav bar */}
+            <Route element={<Layout />}>
 
-            {/* Dashboard */}
+                <Route
+                    path={ROUTES.DASHBOARD}
+                    element={
+                        <ProtectedRoute allow={["ready"]}>
+                            <DashboardContainer />
+                        </ProtectedRoute>
+                    }
+                />
 
-            <Route
-                path={ROUTES.DASHBOARD}
-                element={
-                    <ProtectedRoute allow={["ready"]}>
-                        <DashboardContainer />
-                    </ProtectedRoute>
-                }
-            />
+                <Route
+                    path={ROUTES.SUBJECTS}
+                    element={
+                        <ProtectedRoute allow={["ready"]}>
+                            <SubjectsList />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path={`${ROUTES.SUBJECTS}/:subjectName`}
+                    element={
+                        <ProtectedRoute allow={["ready"]}>
+                            <SubjectTopics />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path={ROUTES.LESSON}
+                    element={
+                        <ProtectedRoute allow={["ready"]}>
+                            <LessonPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+            </Route>
 
         </Routes>
     );

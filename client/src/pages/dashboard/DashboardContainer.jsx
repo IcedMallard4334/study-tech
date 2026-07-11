@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import DashboardSkeleton from "./DashboardSkeleton";
-import NavBar from "../Navigation/NavBar";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import { getDisplayStreak } from "../../utils/streak";
 import { recordStreakActivity } from "../../services/streakService";
@@ -17,22 +16,14 @@ export default function DashboardContainer() {
   const navigate = useNavigate();
 
   if (loading) {
-    return (
-      <>
-        <NavBar />
-        <DashboardSkeleton />
-      </>
-    );
+    return <DashboardSkeleton />;
   }
 
   if (error || !profile) {
     return (
-      <>
-        <NavBar />
-        <div style={{ padding: "2.5rem", textAlign: "center" }}>
-          Couldn't load your profile. {error}
-        </div>
-      </>
+      <div style={{ padding: "2.5rem", textAlign: "center" }}>
+        Couldn't load your profile. {error}
+      </div>
     );
   }
 
@@ -53,23 +44,19 @@ export default function DashboardContainer() {
   };
 
   return (
-    <>
-      <NavBar />
-
-      <Dashboard
-        name={firstName}
-        learningStyle={learningStyle}
-        streakDays={streakDays}
-        stats={stats}
-        subjects={subjects}
-        onResume={() => navigate("/lesson")}
-        onQuickAction={(key) => {
-          if (key === "study") navigate("/study");
-          if (key === "quiz") navigate("/quiz");
-          if (key === "stats") navigate("/stats");
-          if (key === "timer") navigate("/timer");
-        }}
-      />
-    </>
+    <Dashboard
+      name={firstName}
+      learningStyle={learningStyle}
+      streakDays={streakDays}
+      stats={stats}
+      subjects={subjects}
+      onResume={() => navigate("/lesson")}
+      onQuickAction={(key) => {
+        if (key === "study") navigate("/study");
+        if (key === "quiz") navigate("/quiz");
+        if (key === "stats") navigate("/stats");
+        if (key === "timer") navigate("/timer");
+      }}
+    />
   );
 }
