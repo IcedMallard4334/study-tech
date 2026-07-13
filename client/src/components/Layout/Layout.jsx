@@ -4,6 +4,7 @@ import NavBar from "../../pages/Navigation/NavBar";
 const PATH_TO_KEY = {
   "/dashboard": "home",
   "/subjects": "subjects",
+  "/lesson": "subjects",
   "/community": "community",
   "/profile": "profile",
 };
