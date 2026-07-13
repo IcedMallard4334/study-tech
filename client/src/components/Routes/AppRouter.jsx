@@ -21,6 +21,7 @@ import LessonPage from "../../pages/Lesson/LessonPage";
 
 // Dashboard
 import DashboardContainer from "../../pages/dashboard/DashboardContainer";
+import CommunityContainer from "../../pages/community/CommunityContainer";
 
 const AppRouter = () => {
     return(
@@ -111,6 +112,15 @@ const AppRouter = () => {
                     element={
                         <ProtectedRoute allow={["ready"]}>
                             <LessonPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path={ROUTES.COMMUNITY}
+                    element={
+                        <ProtectedRoute allow={["ready"]}>
+                        <CommunityContainer />
                         </ProtectedRoute>
                     }
                 />

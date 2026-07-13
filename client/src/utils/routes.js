@@ -17,5 +17,6 @@ export const ROUTES = {
     SUBJECTS: "/subjects",
 
     LESSON: "/lesson/:topicId",
-
+    
+    COMMUNITY: "/community",
 };
